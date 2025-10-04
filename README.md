@@ -65,15 +65,15 @@ During the countdown, the remaining time is displayed on a **4-digit 7-segment d
 ## 🧩 Circuit Photos
 
 <p align="center">
-  <img src="images/coffee1.jpg" width="600" alt="SaferCoffee Wiring Photo 1">
+  <img src="images/coffee1.JPG" width="600" alt="SaferCoffee Wiring Photo 1">
 </p>
 
 <p align="center">
-  <img src="images/coffee2.jpg" width="600" alt="SaferCoffee Wiring Photo 2">
+  <img src="images/coffee2.JPG" width="600" alt="SaferCoffee Wiring Photo 2">
 </p>
 
 <p align="center">
-  <img src="images/coffee3.jpg" width="600" alt="SaferCoffee Wiring Photo 3">
+  <img src="images/coffee3.JPG" width="600" alt="SaferCoffee Wiring Photo 3">
 </p>
 
 ---

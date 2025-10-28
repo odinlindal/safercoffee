@@ -73,13 +73,16 @@ Because the relay module is **active-low**, a small **NPN transistor** is used a
 ![Circuit Off](images/circuit_off.jpg)
 
 
-- ## 🖥️ web interface
-the ESP32 hosts its own little webpage (stored in `page.h`).
+## 🖥️ Web Interface
 
-it looks something like this:
+The ESP32 hosts its own mini webpage (stored in `page.h`) for remote control.
 
-![WebPage](images/webpage_on.png)
-![WebPage1](images/webpage_off.png)
+It displays the **current mode**, **countdown timer**, and includes a **toggle switch** and **Next Mode** button.
+
+<p align="center">
+  <img src="images/webpage_on.png" alt="Web interface on" width="300"/>
+  <img src="images/webpage_off.png" alt="Web interface off" width="300"/>
+</p>
 
 features:
 - toggle switch to start/stop brewing

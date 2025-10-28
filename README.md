@@ -16,20 +16,70 @@ you can also control it from your phone or laptop over Wi-Fi through a little we
 
 ---
 
-## 🧩 hardware setup
-- **ESP32 Dev Board**
-- **Relay module** (active HIGH)
-- **4-digit 7-segment display** (common anode)
-- **2 push buttons** (start + cycle)
+## 🪛 Wiring Diagram
+
+The **ESP32** controls a coffee machine relay and a 4-digit 7-segment display.  
+Because the relay module is **active-low**, a small **NPN transistor** is used as a **NOT gate** so the ESP32 can safely control it with an active-high output.
+
+---
+
+### ⚡ Relay + Transistor Circuit
+
+| Component | Connection | ESP32 Pin | Notes |
+|------------|-------------|-----------|-------|
+| **GPIO 2** | → 1 kΩ resistor → **Transistor base** | GPIO 2 | Control signal |
+| **Transistor collector** | → **Relay IN** | — | Acts as NOT gate (inverts signal) |
+| **Transistor emitter** | → **GND** | — | Common ground |
+| **Relay VCC** | → **5V** | — | Power for relay coil |
+| **Relay GND** | → **GND** | — | Shared with ESP32 |
+| **Relay COM** | → **Coffee machine line** | — | Power line to switch |
+| **Relay NO (Normally Open)** | → **Coffee machine load** | — | Closes when relay active |
+
+---
+
+### 🔘 Buttons
+
+| Button | ESP32 Pin | Description |
+|---------|------------|-------------|
+| **Start Button** | GPIO 26 | Starts countdown / brew |
+| **Cycle Button** | GPIO 27 | Short press = change mode<br>Long press = stop timer |
+
+---
+
+### 🧮 7-Segment Display (4-Digit, 12-Pin)
+
+| Display Pin | Function | ESP32 Pin |
+|--------------|-----------|-----------|
+| 1 | Segment **A** | GPIO 18 |
+| 2 | Segment **B** | GPIO 17 |
+| 3 | Segment **C** | GPIO 16 |
+| 4 | Segment **D** | GPIO 15 |
+| 5 | Segment **E** | GPIO 14 |
+| 6 | Segment **F** | GPIO 13 |
+| 7 | Segment **G** | GPIO 12 |
+| 8 | Decimal Point **DP** | GPIO 4 |
+| 9 | Digit 1 | GPIO 23 |
+| 10 | Digit 2 | GPIO 22 |
+| 11 | Digit 3 | GPIO 21 |
+| 12 | Digit 4 | GPIO 19 |
+
+🟢 **Display type:** Common Anode  
+💡 **Brightness:** Controlled via software (`sevseg.setBrightness(100)`)
+
+---
+
+📷 _You can reference the circuit images below for clarity:_
+![Circuit On](images/circuit_on.jpg)
+![Circuit Off](images/circuit_off.jpg)
+
 
 - ## 🖥️ web interface
 the ESP32 hosts its own little webpage (stored in `page.h`).
 
 it looks something like this:
 
-![Circuit On](images/circuit_on.png)
-![Circuit Off](images/circuit_off.png)
-![WebPage](images/webpage.png)
+![WebPage](images/webpage_on.png)
+![WebPage1](images/webpage_off.png)
 
 features:
 - toggle switch to start/stop brewing
@@ -37,6 +87,8 @@ features:
 - live countdown timer updated every second
 
 ---
+
+
 
 ## ⚙️ how to use
 1. open `wifiCoffee.ino`
